@@ -49,7 +49,6 @@ public class MainViewController implements Initializable {
 	@FXML
 	private Button btValue09;
 	
-	
 	// Botões de Operações
 	@FXML
 	private Button btValueSub;
@@ -72,6 +71,7 @@ public class MainViewController implements Initializable {
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		
 	}
 
 }
