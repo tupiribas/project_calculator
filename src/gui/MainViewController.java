@@ -3,20 +3,22 @@ package gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import gui.util.Constraints;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import model.service.CalculationService;
 
 public class MainViewController implements Initializable {
-	
+
 	// Cálculo e Resposta
 	@FXML
-	private Label labelCalculation;
+	private TextField txtCalculation;
 
 	@FXML
 	private Label labelResp;
-	
 
 	// Botões de Valores
 	@FXML
@@ -63,73 +65,75 @@ public class MainViewController implements Initializable {
 	private Button btOperationDiv;
 
 	@FXML
-	private Button btValueResult;
+	private Button btResult;
 
 	@FXML
-	private Button btValueFloatingPoint;
-	
+	private Button btFloatingPoint;
+
 	@FXML
 	public void onAddNumbersToLabel() {
 		if (btValue00.isArmed()) {
-			labelCalculation.setText(labelCalculation.getText() + "0");
+			txtCalculation.setText(txtCalculation.getText() + "0");
 		}
 		if (btValue01.isArmed()) {
-			labelCalculation.setText(labelCalculation.getText() + "1");
+			txtCalculation.setText(txtCalculation.getText() + "1");
 		}
 		if (btValue02.isArmed()) {
-			labelCalculation.setText(labelCalculation.getText() + "2");
+			txtCalculation.setText(txtCalculation.getText() + "2");
 		}
 		if (btValue03.isArmed()) {
-			labelCalculation.setText(labelCalculation.getText() + "3");
+			txtCalculation.setText(txtCalculation.getText() + "3");
 		}
 		if (btValue04.isArmed()) {
-			labelCalculation.setText(labelCalculation.getText() + "4");
+			txtCalculation.setText(txtCalculation.getText() + "4");
 		}
 		if (btValue05.isArmed()) {
-			labelCalculation.setText(labelCalculation.getText() + "5");
+			txtCalculation.setText(txtCalculation.getText() + "5");
 		}
 		if (btValue06.isArmed()) {
-			labelCalculation.setText(labelCalculation.getText() + "6");
+			txtCalculation.setText(txtCalculation.getText() + "6");
 		}
 		if (btValue07.isArmed()) {
-			labelCalculation.setText(labelCalculation.getText() + "7");
+			txtCalculation.setText(txtCalculation.getText() + "7");
 		}
 		if (btValue08.isArmed()) {
-			labelCalculation.setText(labelCalculation.getText() + "8");
+			txtCalculation.setText(txtCalculation.getText() + "8");
 		}
 		if (btValue09.isArmed()) {
-			labelCalculation.setText(labelCalculation.getText() + "9");
+			txtCalculation.setText(txtCalculation.getText() + "9");
 		}
 	}
-	
-	public void onAddOperations() {
-		int cont = 0;
 
-		if (cont <= 0) {
-			if (btOperationSub.isArmed()) {
-				labelCalculation.setText(labelCalculation.getText() + " - ");
-			}
-		}
-		else if (cont <= 0) {
-			if (btOperationSum.isArmed()) {
-				labelCalculation.setText(labelCalculation.getText() + " + ");
-			}
-		}
-		else if (cont <= 0) {
-			if (btOperationMul.isArmed()) {
-				labelCalculation.setText(labelCalculation.getText() + " x ");
-			}
-		}
-		else if (cont <= 0)  {
-			if (btOperationDiv.isArmed()) {
-				labelCalculation.setText(labelCalculation.getText() + " ÷ ");
-			}
+	@FXML
+	public void onAddOperations() {
+		if (btOperationSub.isArmed()) {
+			txtCalculation.setText(txtCalculation.getText() + " - ");
+		} 
+		else if (btOperationSum.isArmed()) {
+			txtCalculation.setText(txtCalculation.getText() + "+");
+		} 
+		else if (btOperationMul.isArmed()) {
+			txtCalculation.setText(txtCalculation.getText() + " x ");
+		} 
+		else if (btOperationDiv.isArmed()) {
+			txtCalculation.setText(txtCalculation.getText() + " ÷ ");
 		}
 	}
-	
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		initializeNodes();
 	}
 
+	private void initializeNodes() {
+		Constraints.setTextFieldMaxLength(txtCalculation, 30);
+	}
+	
+	@FXML
+	public void equal() {
+		if (btResult.isArmed()) {
+			String resp = CalculationService.checkingOperations(txtCalculation);
+			labelResp.setText(resp);
+		}
+	}
 }
