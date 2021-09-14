@@ -2,27 +2,25 @@ package model.service;
 
 import java.util.Locale;
 
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class CalculationService {
 
-	public static String checkingOperations(TextField txt) {
-		String result = null;
+	public static void checkingOperations(TextField txt, Label label) {
 		
 		if (txt.getText().contains("+")) {
-			result = calculationSum(txt);
+			label.setText(txt.getText() + " = " + calculationSum(txt));
 		} 
 		else if (txt.getText().contains("-")) {
-			result = calculationSubtration(txt);
+			label.setText(txt.getText() + " = " + calculationSubtration(txt));
 		}
 		else if (txt.getText().contains("x")) {
-			result = calculationMultiplication(txt);
+			label.setText(txt.getText() + " = " + calculationMultiplication(txt));
 		}
 		else if (txt.getText().contains("÷")) {
-			result = calculationDivision(txt);
+			label.setText(txt.getText() + " = " + calculationDivision(txt));
 		}
-		
-		return result;
 	}
 
 	private static String calculationDivision(TextField txt) {

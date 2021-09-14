@@ -65,11 +65,16 @@ public class MainViewController implements Initializable {
 	private Button btOperationDiv;
 
 	@FXML
-	private Button btResult;
+	private Button btFloatingPoint;
+	
+	@FXML
+	public Button btClean;
 
 	@FXML
-	private Button btFloatingPoint;
-
+	public synchronized void onBtCleanAction() {
+		txtCalculation.setText("");
+	}
+		
 	@FXML
 	public synchronized void onAddNumbersToLabel() {
 		if (btValue00.isArmed()) {
@@ -135,9 +140,6 @@ public class MainViewController implements Initializable {
 
 	@FXML
 	public synchronized void equal() {
-		if (btResult.isArmed()) {
-			String result = CalculationService.checkingOperations(txtCalculation);
-			labelResp.setText(result);
-		}
+		CalculationService.checkingOperations(txtCalculation, labelResp);
 	}
 }
