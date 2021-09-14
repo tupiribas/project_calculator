@@ -7,10 +7,10 @@ public class CalculationService {
 	public static String checkingOperations(TextField txt) {
 		String resp = null;
 		
-		if (txt.getText().split("\\+") != null || txt.getText().split(" - ") == null) {
+		if (txt.getText().split("\\+") != null) {
 			resp = calculationSum(txt);
 		}
-		else if (txt.getText().split(" - ") != null || txt.getText().split("\\+") == null) {
+		else if (txt.getText().split(" - ") != null) {
 			resp = calculationSubtration(txt);
 		}
 		return resp;

@@ -11,4 +11,12 @@ public class Constraints {
 			}
 		});
 	}
+	
+	public static void setTextFieldOperations(TextField txt) {
+		txt.textProperty().addListener((obs, oldValue, newValue) -> {
+			if (newValue != null && !newValue.matches("\\d*[\\-+x÷]\\d+")) {
+				txt.setText(oldValue);
+			}
+		});
+	}
 }

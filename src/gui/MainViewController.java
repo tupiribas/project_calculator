@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -107,16 +108,16 @@ public class MainViewController implements Initializable {
 	@FXML
 	public void onAddOperations() {
 		if (btOperationSub.isArmed()) {
-			txtCalculation.setText(txtCalculation.getText() + " - ");
+			txtCalculation.setText(txtCalculation.getText() + "-");
 		} 
 		else if (btOperationSum.isArmed()) {
 			txtCalculation.setText(txtCalculation.getText() + "+");
 		} 
 		else if (btOperationMul.isArmed()) {
-			txtCalculation.setText(txtCalculation.getText() + " x ");
+			txtCalculation.setText(txtCalculation.getText() + "x");
 		} 
 		else if (btOperationDiv.isArmed()) {
-			txtCalculation.setText(txtCalculation.getText() + " ÷ ");
+			txtCalculation.setText(txtCalculation.getText() + "÷");
 		}
 	}
 
@@ -127,6 +128,7 @@ public class MainViewController implements Initializable {
 
 	private void initializeNodes() {
 		Constraints.setTextFieldMaxLength(txtCalculation, 30);
+		Constraints.setTextFieldOperations(txtCalculation);
 	}
 	
 	@FXML
