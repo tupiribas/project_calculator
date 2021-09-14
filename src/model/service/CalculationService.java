@@ -4,16 +4,8 @@ import javafx.scene.control.TextField;
 
 public class CalculationService {
 	
-	public static String checkingOperations(TextField txt) {
-		String resp = null;
+	public static void checkingOperations(TextField txt) {
 		
-		if (txt.getText().split("\\+") != null) {
-			resp = calculationSum(txt);
-		}
-		else if (txt.getText().split(" - ") != null) {
-			resp = calculationSubtration(txt);
-		}
-		return resp;
 	}
 	
 	private static String calculationSubtration(TextField txt) {

@@ -1,6 +1,5 @@
 package gui;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -10,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import model.service.CalculationService;
 
 public class MainViewController implements Initializable {
 
@@ -72,7 +70,7 @@ public class MainViewController implements Initializable {
 	private Button btFloatingPoint;
 
 	@FXML
-	public void onAddNumbersToLabel() {
+	public synchronized void onAddNumbersToLabel() {
 		if (btValue00.isArmed()) {
 			txtCalculation.setText(txtCalculation.getText() + "0");
 		}
@@ -106,7 +104,7 @@ public class MainViewController implements Initializable {
 	}
 
 	@FXML
-	public void onAddOperations() {
+	public synchronized void onAddOperations() {
 		if (btOperationSub.isArmed()) {
 			txtCalculation.setText(txtCalculation.getText() + "-");
 		} 
@@ -133,9 +131,9 @@ public class MainViewController implements Initializable {
 	
 	@FXML
 	public void equal() {
-		if (btResult.isArmed()) {
-			String resp = CalculationService.checkingOperations(txtCalculation);
-			labelResp.setText(resp);
-		}
+//		if (btResult.isArmed()) {
+//			String resp = CalculationService.checkingOperations(txtCalculation);
+//			labelResp.setText(resp);
+//		}
 	}
 }
