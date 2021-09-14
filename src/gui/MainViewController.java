@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import model.service.CalculationService;
 
 public class MainViewController implements Initializable {
 
@@ -107,14 +108,11 @@ public class MainViewController implements Initializable {
 	public synchronized void onAddOperations() {
 		if (btOperationSub.isArmed()) {
 			txtCalculation.setText(txtCalculation.getText() + "-");
-		} 
-		else if (btOperationSum.isArmed()) {
+		} else if (btOperationSum.isArmed()) {
 			txtCalculation.setText(txtCalculation.getText() + "+");
-		} 
-		else if (btOperationMul.isArmed()) {
+		} else if (btOperationMul.isArmed()) {
 			txtCalculation.setText(txtCalculation.getText() + "x");
-		} 
-		else if (btOperationDiv.isArmed()) {
+		} else if (btOperationDiv.isArmed()) {
 			txtCalculation.setText(txtCalculation.getText() + "÷");
 		}
 	}
@@ -128,12 +126,12 @@ public class MainViewController implements Initializable {
 		Constraints.setTextFieldMaxLength(txtCalculation, 30);
 		Constraints.setTextFieldOperations(txtCalculation);
 	}
-	
+
 	@FXML
-	public void equal() {
-//		if (btResult.isArmed()) {
-//			String resp = CalculationService.checkingOperations(txtCalculation);
-//			labelResp.setText(resp);
-//		}
+	public synchronized void equal() {
+		if (btResult.isArmed()) {
+			String result = CalculationService.checkingOperations(txtCalculation);
+			labelResp.setText(result);
+		}
 	}
 }
