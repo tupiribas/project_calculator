@@ -108,12 +108,18 @@ public class MainViewController implements Initializable {
 	public synchronized void onAddOperations() {
 		if (btOperationSub.isArmed()) {
 			txtCalculation.setText(txtCalculation.getText() + "-");
-		} else if (btOperationSum.isArmed()) {
+		} 
+		else if (btOperationSum.isArmed()) {
 			txtCalculation.setText(txtCalculation.getText() + "+");
-		} else if (btOperationMul.isArmed()) {
+		} 
+		else if (btOperationMul.isArmed()) {
 			txtCalculation.setText(txtCalculation.getText() + "x");
-		} else if (btOperationDiv.isArmed()) {
+		} 
+		else if (btOperationDiv.isArmed()) {
 			txtCalculation.setText(txtCalculation.getText() + "÷");
+		}
+		else if (btFloatingPoint.isArmed()) {
+			txtCalculation.setText(txtCalculation.getText() + ".");
 		}
 	}
 
