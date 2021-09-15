@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import gui.util.Constraints;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -71,8 +72,8 @@ public class MainViewController implements Initializable {
 	public Button btClean;
 
 	@FXML
-	public synchronized void onBtCleanAction() {
-		txtCalculation.setText("");
+	public void onBtCleanAction(Event eve) {
+		this.txtCalculation.setText("");
 	}
 		
 	@FXML
@@ -135,11 +136,16 @@ public class MainViewController implements Initializable {
 
 	private void initializeNodes() {
 		Constraints.setTextFieldMaxLength(txtCalculation, 30);
-		Constraints.setTextFieldOperations(txtCalculation);
+//		Constraints.setTextFieldOperations(txtCalculation);
 	}
 
 	@FXML
 	public synchronized void equal() {
-		CalculationService.checkingOperations(txtCalculation, labelResp);
+		if (txtCalculation.getText() == null) {
+			labelResp.setText("Clique nos botões para adicionar valores!");
+		} 
+		else {
+			CalculationService.checkingOperations(txtCalculation, labelResp);
+		}
 	}
 }
