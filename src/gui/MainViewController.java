@@ -139,6 +139,7 @@ public class MainViewController implements Initializable {
 //		Constraints.setTextFieldOperations(txtCalculation);
 	}
 
+	// Mostrar o resultado
 	@FXML
 	public synchronized void equal() {
 		if (txtCalculation.getText() == null) {
